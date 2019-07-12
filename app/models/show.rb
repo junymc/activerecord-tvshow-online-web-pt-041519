@@ -2,11 +2,11 @@ require 'pry'
 class Show < ActiveRecord::Base
 
   def self.highest_rating
-    Show.maximum("rating")
+    self.maximum("rating")
   end
 
   def self.most_popular_show
-    Show.where("rating = ?", self.highest_rating).first
+    self.where("rating = ?", self.highest_rating).first
     # binding.pry
   end
 
@@ -15,11 +15,11 @@ class Show < ActiveRecord::Base
   end
 
   def self.least_popular_show
-    Show.where("rating = ?", self.lowest_rating).first
+    self.where("rating = ?", self.lowest_rating).first
   end
 
   def ratings_sum
-    Show.sum("rating")
+    self.sum("rating")
   end
 
 
